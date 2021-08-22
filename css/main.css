@@ -6,19 +6,6 @@
     font-style: normal;
 }
 
-#home{
-    padding-top: 50px;
-    padding-left: 50px;
-}
-
-#col-text-home{
-    padding-top: 80px;
-    padding-left: 50px;
-}
-#isotipo-home img{
-    padding-left: 50px;
-    align-items: center;
-}
 
 #navbar_chacu {
     background-color: #95C11F !important;
@@ -33,6 +20,19 @@
     min-height: 100vh;
   }
 
+#home{   
+    text-align: center;         
+}
+
+#home h2{   
+    color: #ffffff;
+    background-color: #ff7d26;
+}
+
+
+#logo {   
+    width: 35%;   
+}
 
 /*acceso - registro*/
 #modal {
