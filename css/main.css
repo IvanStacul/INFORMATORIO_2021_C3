@@ -1,0 +1,83 @@
+
+/*header*/
+@font-face {
+    font-family: 'burbank-big';
+    src: url('../fonts/burbank-big.ttf');
+    font-style: normal;
+}
+
+#home{
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+#col-text-home{
+    padding-top: 80px;
+    padding-left: 50px;
+}
+#isotipo-home img{
+    padding-left: 50px;
+    align-items: center;
+}
+
+#navbar_chacu {
+    background-color: #95C11F !important;
+    font-family:'burbank-big', 'montserrat';
+    font-size: 30px;
+    letter-spacing: 1px;    
+  }
+
+#header_chacu {
+    background: url("../img/chacu_home.png") no-repeat center;
+    background-size: cover;
+    min-height: 100vh;
+  }
+
+
+/*acceso - registro*/
+#modal {
+    padding: 40px;
+    background-color: #95C11F;
+    text-align: center;
+    color: #ffffff;     
+    
+}
+
+#modal h2{
+    font-family: 'burbank-big';
+    font-size: 50px;
+    letter-spacing: 1px; 
+    
+}
+
+/*jugabilidad*/
+#jugabilidad {
+    padding-top: 40px;  
+    padding-bottom: 40px;
+    
+}
+
+#jugabilidad h2{
+    font-family: 'burbank-big';
+    font-size: 50px;
+    letter-spacing: 1px; 
+    text-align: center;
+}
+
+#etapas p{
+    text-align: justify;
+}
+
+#etapas h5{
+    text-align: center;
+}
+
+
+
+/*Seccion contacto */
+input, textarea{
+    margin-bottom: 10px;
+}
+#contact {
+    padding: 50px;
+}
