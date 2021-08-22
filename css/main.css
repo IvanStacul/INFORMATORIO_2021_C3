@@ -81,3 +81,23 @@ input, textarea{
 #contact {
     padding: 50px;
 }
+
+
+/*PAGINA ACERCA DE */
+
+#acerca_de{
+    padding-top: 50px;
+}
+
+
+
+/*PAGINA CREADORES */
+#creadores{
+    padding-top: 50px;
+}
+
+
+/*PAGINA RANKING */
+#ranking{
+    padding-top: 50px;
+}
