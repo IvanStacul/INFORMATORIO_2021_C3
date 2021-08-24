@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Chacú.py</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+	<header id="header_chacu">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid" id="navbar_chacu">
+				<a class="navbar-brand" href="#Inicio"><img src="img/logo_chacu_py.png" alt="chacú_py" class="img-fluid float-left"></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#chacu_navbar"
+					aria-controls="chacu_navbar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="chacu_navbar">
+					<ul class="nav navbar-nav ml-auto">
+						<li class="nav-item" >
+							<a class="nav-link" href="page/acerca_de.html">Acerca de</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="page/creadores.html">Creadores</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="page/ranking.html">Ranking</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-bs-toggle="modal" data-bs-target="#chacu_modal-login">JUGAR</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#Contacto">Contacto</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container" id="home">
+			<div class="row">
+				<div class="col-lg-12">
+					<img src="img/isotipo_chacu.png" id="logo">				
+					<img src="img/btn/text_home.png" class="img-fluid">
+					<img src="img/btn/btn-jugar.png" class="img-fluid" data-bs-toggle="modal"
+						data-bs-target="#chacu_modal-login"></a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+	<section>
+		<div class="container-fluid" id="modal">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Una nueva forma de aprender jugando</h2>
+					<br>
+					<h4>CHACÚ.py es un juego gratuito, didáctico y de habilidad, donde el jugador debe contestar
+						preguntas sobre conocimientos generales en torno a la Provincia el Chaco.</h4>
+					<br>
+					<img src="img/btn/btn-crear.png" class="boton" data-bs-toggle="modal"
+						data-bs-target="#chacu_modal"></a>
+				</div>
+			</div>
+		</div>
+		<!-- Modal 1-->
+		<div class="modal fade" id="chacu_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Creá tu usuario Chacú.py</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<h6>Completá los datos requeridos</h6>
+						</br>
+						<form class="needs-validation" novalidate>
+							<div class="row">
+								<div class="mb-3">
+									<input type="text" class="form-control" id="validationCustom01"
+										placeholder="Nombre/s" required>
+									<div class="valid-feedback">
+										Perfecto!
+									</div>
+									<div class="invalid-feedback">
+										Ups! Necesitamos conocer tu nombre.
+									</div>
+								</div>
+								<div class="mb-3">
+									<input type="text" class="form-control" id="validationCustom02"
+										placeholder="Apellido/s" required>
+									<div class="valid-feedback">
+										Perfecto!
+									</div>
+									<div class="invalid-feedback">
+										Ups! Necesitamos conocer tu apellido.
+									</div>
+								</div>
+								<div class="mb-3">
+									<input type="email" class="form-control" id="validationCustom03"
+										placeholder="Correo electrónico" required>
+									<div class="valid-feedback">
+										Perfecto!
+									</div>
+									<div class="invalid-feedback">
+										Ups! Necesitamos conocer tu e-mail.
+									</div>
+								</div>
+								<div class="mb-3">
+									<input type="password" class="form-control" id="validationCustom03"
+										placeholder="Contraseña" required>
+									<div class="valid-feedback">
+										Perfecto!
+									</div>
+									<div class="invalid-feedback">
+										Ups! Necesitamos que generes una contraseña.
+									</div>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-bs-dismiss="modal">En otro
+									momento</button>
+								<button type="submit" class="btn btn-success">Crear Usuario!</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal login-->
+		<div class="modal fade" id="chacu_modal-login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Iniciá tu sesión en Chacú.py</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<h6>Completá los datos requeridos</h6>
+						</br>
+						<form class="needs-validation" novalidate>
+							<div class="row">
+								<div class="mb-3">
+									<input type="text" class="form-control" id="validationCustom01"
+										placeholder="Usuario / E-mail" required>
+									<div class="valid-feedback">
+										Perfecto!
+									</div>
+									<div class="invalid-feedback">
+										Ups! Necesitamos conocer tu usuario o e-mail.
+									</div>
+								</div>
+								<div class="mb-3">
+									<input type="password" class="form-control" id="validationCustom03"
+										placeholder="Tu Contraseña" required>
+									<div class="valid-feedback">
+										Perfecto!
+									</div>
+									<div class="invalid-feedback">
+										Ups! Necesitamos que ingreses una contraseña.
+									</div>
+									<a href="#">¿Olvidaste tu contraseña?</a>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ahora no</button>
+								<button type="submit" class="btn btn-success">Jugar!</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container" id="jugabilidad">
+			<h2>En 3 simples pasos, ya estas jugando</h2>
+			<br>
+			<div class="row" id="etapas">
+				<div class="col-lg-4">
+					<div class="card">
+						<img src="img/paso_1.png" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Iniciá un nueva partida</h5>
+							<p class="card-text">Para comenzar una partida, el Jugador deberá estar previamente
+								registrado en el juego y contar con su usuario y contraseña. Todas las partidas inician
+								en base a la configuración del jugador.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="card">
+						<img src="img/paso_2.png" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Seleccioná el nivel de dificultad</h5>
+							<p class="card-text">El Jugador debe seleccionar el nivel de dificultad deseado entre los
+								niveles: principiante, medio y experto. Cada nivel de dificultad cuenta con un tiempo
+								estimado por cada pregunta.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="card">
+						<img src="img/paso_3.png" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Elegí la categoría que desees</h5>
+							<p class="card-text">Finalmente, el Jugador debe seleccionar la categoría deseada para la
+								partida, existiendo la
+								posibilidad de optar por una categoría “aleatoria” que presenta preguntas al azar sobre
+								todas las categorías disponibles.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="Contacto">
+		<div class="container" id="contact">
+			<h2>Formulario de contacto</h2>
+			<hr>
+			<form class="needs-validation" novalidate>
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" class="form-control" id="validationCustom01" placeholder="Nombre/s" required>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups! Necesitamos conocer tu nombre.
+						</div>
+					</div>
+					<div class="col-md-6">
+						<input type="text" class="form-control" id="validationCustom02" placeholder="Apellido/s"
+							required>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups! Necesitamos conocer tu apellido.
+						</div>
+					</div>
+					<div class="col-md-6">
+						<input type="email" class="form-control" id="validationCustom03"
+							placeholder="Correo electrónico" required>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups! Necesitamos conocer tu e-mail.
+						</div>
+					</div>
+					<div class="col-md-6">
+						<input type="number" class="form-control" id="validationCustom04" placeholder="Whatsapp"
+							required>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups! Quizas te contactaremos por whatsapp.
+						</div>
+					</div>
+					<div class="col-md-6">
+						<input type="text" class="form-control" id="validationCustom05" placeholder="Provincia"
+							required>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups! Necesitamos conocer tu provincia.
+						</div>
+					</div>
+					<div class="col-md-4">
+						<input type="text" class="form-control" id="validationCustom06" placeholder="Ciudad" required>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups! Necesitamos conocer tu ciudad.
+						</div>
+					</div>
+					<div class="col-md-2">
+						<input type="number" class="form-control" id="validationCustom07" placeholder="CP" min="0"
+							required>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups!
+						</div>
+					</div>
+					<div class="col-md-12">
+						<textarea class="form-control" rows="3" id="validationCustom08"
+							placeholder="Ingrese su consulta" required></textarea>
+						<div class="valid-feedback">
+							Perfecto!
+						</div>
+						<div class="invalid-feedback">
+							Ups! Necesitamos conocer tu consulta, escribimos algo.
+						</div>
+					</div>
+					<hr>
+					<div class="col-12">
+						<button type="submit" class="btn btn-success">Enviar consulta</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<footer>
+		<section>
+			<div class="container">
+				<div class="col-12">
+					<h1>Footer sección</h1>
+				</div>
+			</div>
+		</section>
+
+	</footer>
+
+	<script type="text/javascript">
+		(function () {
+			'use strict'
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.querySelectorAll('.needs-validation')
+			// Loop over them and prevent submission
+			Array.prototype.slice.call(forms)
+				.forEach(function (form) {
+					form.addEventListener('submit', function (event) {
+						if (!form.checkValidity()) {
+							event.preventDefault()
+							event.stopPropagation()
+						}
+						form.classList.add('was-validated')
+					}, false)
+				})
+		})()
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
