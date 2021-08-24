@@ -16,7 +16,7 @@ cd INFORMATORIO_2021_C3
 #### SSH
 
 ``` shell
-git clone https://github.com/IvanStacul/INFORMATORIO_2021_C3.git
+git clone git@github.com:IvanStacul/INFORMATORIO_2021_C3.git
 cd INFORMATORIO_2021_C3
 ```
 
