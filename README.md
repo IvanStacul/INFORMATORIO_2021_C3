@@ -6,6 +6,15 @@ Repository of the final web project, developed with Django, for the course given
 
 ### Clone the repo
 
+#### HTTPS
+
+``` shell
+git clone https://github.com/IvanStacul/INFORMATORIO_2021_C3.git
+cd INFORMATORIO_2021_C3
+```
+
+#### SSH
+
 ``` shell
 git clone https://github.com/IvanStacul/INFORMATORIO_2021_C3.git
 cd INFORMATORIO_2021_C3
@@ -13,12 +22,20 @@ cd INFORMATORIO_2021_C3
 
 ### Create virtualenv and install requirements
 
-On windows
+On windows PowerShell
 
 ```shell
 py -m venv venv
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 venv/Scripts/Activate.ps1
+pip install -r requirements.txt
+```
+
+On windows cmd
+
+```shell
+py -m venv venv
+venv/Scripts/activate.bat
 pip install -r requirements.txt
 ```
 
