@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% block title %} Error {%endblock title %} 
+{%block styles %} 
+  {% load static %}
+  <link href="{% static 'css/play.css' %}" rel="stylesheet" />
+{% endblock styles %} 
+{% block content %}
+	<div class="container mt-5">
+			<div class="config py-2 px-4">
+				<div class="alert alert-danger">
+					{{description}}
+				</div>
+			</div>
+	</div>
+{% endblock content %}

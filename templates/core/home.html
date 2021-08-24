@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% block title %} Chacú.py {% endblock title %}
+{% block styles %}
+{% load static %}
+<link href="{% static 'css/cover.css' %}" rel="stylesheet" />
+{% endblock styles %} 
+{% block content %}
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+		<header class="masthead mb-auto">
+			<div class="inner">
+				<nav class="nav nav-masthead justify-content-center">
+					<a class="nav-link active" href="{% url 'about' %}">Chacú.py</a>
+					<a class="nav-link" href="{% url 'us' %}">Us</a>
+					<a class="nav-link" href="{% url 'ranking' %}">Ranking</a>
+					{% comment %} <a class="nav-link" href="{% url 'play' %}">PLAY</a> {% endcomment %}
+					<a class="nav-link" href="{% url 'login' %}">Login</a>
+					<a class="nav-link" href="{% url 'contact' %}">Contact</a>
+				</nav>
+			</div>
+		</header>
+
+		<main role="main" class="inner cover">
+			<h1 class="cover-heading text-center">Chacú.py</h1>
+			<p class="lead text-center">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+				fugit.
+			</p>
+			<p class="lead text-center">
+				<a href="{% url 'config' %}" class="btn btn-lg btn-secondary">Start</a>
+			</p>
+		</main>
+
+		<footer class="mastfoot mt-auto">
+			<div class="inner">
+				<p>Desarrollado por el grupo 4</p>
+			</div>
+		</footer>
+	</div>
+{% endblock content %}

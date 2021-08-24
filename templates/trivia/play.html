@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% block title %} Chacú.py {% endblock title %}
+{%block styles %}
+  {% load static %}
+  <link href="{% static 'css/play.css' %}" rel="stylesheet" />
+{% endblock styles %} {% block content %}
+<form action="#" method="POST">
+  <div class="container mt-sm-5 my-1">
+    {% if error and trivia %}
+      <div class="alert alert-danger" role="alert">
+        {{error}}
+        <p>Puntaje: {{trivia.score}}</p>
+      </div>
+    {% else %}
+      {% if question %} 
+        {% csrf_token %}
+        <input type="number" name="question_id" value="{{ question.pk }}" hidden>
+        <input type="number" name="trivia_id" value="{{ trivia.pk }}" hidden>
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+          <div class="py-2 h5">
+            <b>{{ question }}</b>
+          </div>
+          <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+            {% for option in options %}
+            <label class="options">
+              {{ option.content }}
+              <input type="radio" name="answer" value="{{ option.pk }}" />
+              <span class="checkmark"></span>
+            </label>
+            {% empty %}
+            <div class="alert alert-danger" role="alert">
+              No hay opciones para la pregunta
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="d-flex align-items-center pt-3">
+          <div id="prev"><button class="btn btn-primary">Previous</button></div>
+          <div class="ml-auto mr-sm-5">
+            <button class="btn btn-success" type="submit">Next</button>
+          </div>
+        </div>
+      {% else %}
+        <div class="alert alert-danger" role="alert">
+          Lo sentimos, algo salió mal 😥, no hay una pregunta para que puedas
+          responder. Pero no te preocupes, no es tu culpa 🙌. Intenta más tarde, tal
+          vez el problema se solucione, o <a href="{% url 'contact' %}">¡hablanos!</a>.
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</form>
+{% endblock content %}

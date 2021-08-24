@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block title %} Resultado positivo {%endblock title %} 
+{%block styles %} 
+  {% load static %}
+  <link href="{% static 'css/play.css' %}" rel="stylesheet" />
+{% endblock styles %} 
+{% block content %}
+  <div class="container mt-5">
+			<div class="config py-2 px-4">
+				<div class="alert alert-info">
+					{{description}}
+				</div>
+			</div>
+			<div class="d-flex align-content-center pt-3">
+				<a class="btn btn-success" href="{% url 'play' trivia=trivia.pk %}">Next</a>
+			</div>
+	</div>
+{% endblock content %}
