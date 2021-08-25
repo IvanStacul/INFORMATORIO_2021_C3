@@ -12,8 +12,11 @@
 					<a class="nav-link active" href="{% url 'about' %}">Chacú.py</a>
 					<a class="nav-link" href="{% url 'us' %}">Us</a>
 					<a class="nav-link" href="{% url 'ranking' %}">Ranking</a>
-					{% comment %} <a class="nav-link" href="{% url 'play' %}">PLAY</a> {% endcomment %}
-					<a class="nav-link" href="{% url 'login' %}">Login</a>
+					{% if request.user.is_authenticated %}
+						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+					{% else %}
+						<a class="nav-link" href="{% url 'login' %}">Login</a>
+					{% endif %}
 					<a class="nav-link" href="{% url 'contact' %}">Contact</a>
 				</nav>
 			</div>
