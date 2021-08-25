@@ -9,7 +9,7 @@
     {% if error and trivia %}
       <div class="alert alert-danger" role="alert">
         {{error}}
-        <p>Puntaje: {{trivia.score}}</p>
+        <p>Puntaje: {{trivia.score}}/{{max_score}}</p>
       </div>
     {% else %}
       {% if question %} 
