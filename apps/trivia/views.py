@@ -8,6 +8,8 @@ from django.conf import settings
 # Models
 from .models import Category, Game, Level, Question, Option, Quiz
 
+# Exceptions
+from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 def play(request: HttpRequest, trivia: int):
@@ -16,14 +18,13 @@ def play(request: HttpRequest, trivia: int):
     if not request.user.is_authenticated:
         return redirect('login')
 
+    # verifica si existe el juego que nos piden
     try:
-        # preguntamos si existe el juego que nos piden
         trivia = Quiz.objects.get(pk=trivia)
-    except:
-        # error 404
+    except ObjectDoesNotExist:
         return HttpResponseNotFound('El juego no existe')
 
-    # si obtenemos una trivia pero ya finalizo lanzamos un error
+    # si obtenemos una trivia pero ya finalizo lanzamos un alert
     if not trivia.end is None:
         return render(
             request=request,
@@ -37,6 +38,7 @@ def play(request: HttpRequest, trivia: int):
 
     # obtenemos la primer pregunta no respondida del juego en progreso
     progress = Game.objects.filter(quiz_id=trivia.pk, answered=False).first()
+    
     # luego extraemos las opciones a esa pregunta
     options = Option.objects.filter(
         question_id=progress.question.id,
@@ -45,10 +47,37 @@ def play(request: HttpRequest, trivia: int):
 
     # si ya se envio una respuesta a la pregunta
     if request.method == "POST":
+        try:
+            selected = Option.objects.get(  # opcion elegida
+                pk=request.POST.get('answer')
+            )
+        except ObjectDoesNotExist:
+            answer = Game.objects.get(  # pregunta que se respondio
+                question_id=request.POST.get('question_id'),
+                quiz_id=trivia.pk
+            )
+            answer.answered = True  # marcar como respondida la pregunta
+            answer.isCorrect = False  # marcar como erronea la pregunta
+            answer.save()  # guardar resultados de la pregunta
+            
+            game = Game.objects.filter(quiz_id=trivia.pk)
 
-        selected = Option.objects.get(  # opcion elegida
-            pk=request.POST.get('answer')
-        )
+            # si ya no existen mas preguntas por responder
+            if not game.filter(answered=False).exists():
+                quiz = Quiz.objects.get(pk=trivia.pk)  # obtener el quiz actual
+                quiz.score = len(game.filter(isCorrect=True)) * 20
+                quiz.end = timezone.now()  # guardar el tiempo de fin del quiz
+                quiz.save()  # guardar resultados
+            
+            return render(
+                    request=request,
+                    template_name='trivia/false.html',
+                    context = {
+                        'description': 'no seleccionaste nignuna opcion',
+                        'trivia': trivia,
+                    }
+                )
+        
         answer = Game.objects.get(  # pregunta que se respondio
             question_id=request.POST.get('question_id'),
             quiz_id=trivia.pk
@@ -94,7 +123,7 @@ def play(request: HttpRequest, trivia: int):
         request=request,
         template_name='trivia/play.html',
         context={
-            'trivia': trivia.pk,
+            'trivia': trivia,
             'question': progress.question,
             'options': options,
         }
