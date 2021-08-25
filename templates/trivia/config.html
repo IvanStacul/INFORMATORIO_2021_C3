@@ -19,7 +19,7 @@
                 {% if levels %}
                   <label for="level">Dificultad</label>
                   <select name="level" class="custom-select" required>
-                      <option selected>Open this select menu</option>
+                      <option selected value="">Open this select menu</option>
                     {% for level in levels %}
                       <option value="{{level.id}}">{{level.name}}</option>
                     {% endfor %}
@@ -39,7 +39,7 @@
                 {% if categories %}
                   <label for="level">Categoría</label>
                   <select name="category" class="custom-select" required>
-                    <option selected>Open this select menu</option>
+                    <option selected value="">Open this select menu</option>
                     {% for category in categories %}
                       <option value="{{category.id}}">{{category.name}}</option>
                     {% endfor %}
