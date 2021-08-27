@@ -21,7 +21,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="chacu_navbar">
-					<ul class="nav navbar-nav mr-auto">
+					<ul class="nav navbar-nav ml-auto">
 						<li class="nav-item" >
 							<a class="nav-link" href="page/acerca_de.html">Acerca de</a>
 						</li>
@@ -224,108 +224,124 @@
 		</div>
 	</section>
 
-	<section id="Contacto">
-		<div class="container" id="contact">
-			<h2>Formulario de contacto</h2>
+	<section id="contacto">
+		<div class="container">			
+			<h2 class="title">Formulario de contacto</h2>
 			<hr>
-			<form class="needs-validation" novalidate>
-				<div class="row">
-					<div class="col-md-6">
-						<input type="text" class="form-control" id="validationCustom01" placeholder="Nombre/s" required>
-						<div class="valid-feedback">
-							Perfecto!
+			<div class="row">
+				<div class="col-md-8">
+					<form class="needs-validation" novalidate>
+					<div class="row">
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="validationCustom01" placeholder="Nombre/s" required>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups! Necesitamos conocer tu nombre.
+							</div>
 						</div>
-						<div class="invalid-feedback">
-							Ups! Necesitamos conocer tu nombre.
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="validationCustom02" placeholder="Apellido/s"
+								required>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups! Necesitamos conocer tu apellido.
+							</div>
+						</div>
+						<div class="col-md-6">
+							<input type="email" class="form-control" id="validationCustom03"
+								placeholder="Correo electrónico" required>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups! Necesitamos conocer tu e-mail.
+							</div>
+						</div>
+						<div class="col-md-6">
+							<input type="number" class="form-control" id="validationCustom04" placeholder="Whatsapp"
+								required>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups! Quizas te contactaremos por whatsapp.
+							</div>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="validationCustom05" placeholder="Provincia"
+								required>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups! Necesitamos conocer tu provincia.
+							</div>
+						</div>
+						<div class="col-md-4">
+							<input type="text" class="form-control" id="validationCustom06" placeholder="Ciudad" required>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups! Necesitamos conocer tu ciudad.
+							</div>
+						</div>
+						<div class="col-md-2">
+							<input type="number" class="form-control" id="validationCustom07" placeholder="CP" min="0"
+								required>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups!
+							</div>
+						</div>
+						<div class="col-md-12">
+							<textarea class="form-control" rows="3" id="validationCustom08"
+								placeholder="Ingrese su consulta" required></textarea>
+							<div class="valid-feedback">
+								Perfecto!
+							</div>
+							<div class="invalid-feedback">
+								Ups! Necesitamos conocer tu consulta, escribimos algo.
+							</div>
+						</div>
+						<hr>
+						<div class="col-12">
+							<button type="submit" class="btn btn-success">Enviar consulta</button>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<input type="text" class="form-control" id="validationCustom02" placeholder="Apellido/s"
-							required>
-						<div class="valid-feedback">
-							Perfecto!
-						</div>
-						<div class="invalid-feedback">
-							Ups! Necesitamos conocer tu apellido.
-						</div>
-					</div>
-					<div class="col-md-6">
-						<input type="email" class="form-control" id="validationCustom03"
-							placeholder="Correo electrónico" required>
-						<div class="valid-feedback">
-							Perfecto!
-						</div>
-						<div class="invalid-feedback">
-							Ups! Necesitamos conocer tu e-mail.
-						</div>
-					</div>
-					<div class="col-md-6">
-						<input type="number" class="form-control" id="validationCustom04" placeholder="Whatsapp"
-							required>
-						<div class="valid-feedback">
-							Perfecto!
-						</div>
-						<div class="invalid-feedback">
-							Ups! Quizas te contactaremos por whatsapp.
-						</div>
-					</div>
-					<div class="col-md-6">
-						<input type="text" class="form-control" id="validationCustom05" placeholder="Provincia"
-							required>
-						<div class="valid-feedback">
-							Perfecto!
-						</div>
-						<div class="invalid-feedback">
-							Ups! Necesitamos conocer tu provincia.
-						</div>
-					</div>
-					<div class="col-md-4">
-						<input type="text" class="form-control" id="validationCustom06" placeholder="Ciudad" required>
-						<div class="valid-feedback">
-							Perfecto!
-						</div>
-						<div class="invalid-feedback">
-							Ups! Necesitamos conocer tu ciudad.
-						</div>
-					</div>
-					<div class="col-md-2">
-						<input type="number" class="form-control" id="validationCustom07" placeholder="CP" min="0"
-							required>
-						<div class="valid-feedback">
-							Perfecto!
-						</div>
-						<div class="invalid-feedback">
-							Ups!
-						</div>
-					</div>
-					<div class="col-md-12">
-						<textarea class="form-control" rows="3" id="validationCustom08"
-							placeholder="Ingrese su consulta" required></textarea>
-						<div class="valid-feedback">
-							Perfecto!
-						</div>
-						<div class="invalid-feedback">
-							Ups! Necesitamos conocer tu consulta, escribimos algo.
-						</div>
-					</div>
-					<hr>
-					<div class="col-12">
-						<button type="submit" class="btn btn-success">Enviar consulta</button>
-					</div>
+					</form>
 				</div>
-			</form>
-		</div>
-	</section>
-
-	<footer>
-		<section>
-			<div class="container">
-				<div class="col-12">
-					<h1>Footer sección</h1>
+				<div class="col-md-4">
+					<img src="img/isotipo_chacu.png" class="img-fluid" alt="...">
 				</div>
 			</div>
+		</div>
+	</section>
+	<footer>
+		<section>
+			<div class="container-fluid" id="footer">
+					<div class="container w-50 pt-5">
+					  <div class="row row-cols-md-2 justify-content-md-center">
+						<div class="col text-center">
+							<img src="img/informatorio.jpg" class="card-img-top" alt="...">						  
+						</div>
+					  </div>
+					  <div class="row justify-content-md-center py-5">
+						<div class="col text-center font-weight-light">
+						  <p>Chacú.py es un proyecto grupal desarrollado en el marco de la Segunda Etapa del Informatorio Chaco.</p>
+						  <p>©2021 - Grupo N°4 Comisión 3. Informatorio Chaco.</p>
+						  <p>- Resistencia, Chaco. Argentina - </p>
+						</div>					
+					  </div>					 
+					</div>
+				</div>
 		</section>
-
 	</footer>
 
 	<script type="text/javascript">
