@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 # Models
 from apps.players.models import Player
 
+# Utilities
+from datetime import timedelta
 
 class Category(models.Model):
     name = models.CharField(max_length=60, unique=True)
@@ -63,6 +65,9 @@ class Quiz(models.Model):
     start = models.DateTimeField(auto_now_add=True,
                                  verbose_name="Start")
     end = models.DateTimeField(null=True, blank=True, verbose_name="End")
+
+    def time(self):
+        return str(timedelta(seconds=(self.end - self.start).seconds))
 
     def __str__(self) -> str:
         return f"{self.category.name} - {self.level.name}"

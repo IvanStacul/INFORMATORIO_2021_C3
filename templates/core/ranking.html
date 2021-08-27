@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Ranking{% endblock title %}
+{% block content %}
+<div class="row">
+  <div class="col-10 offset-1 pt-5">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Score</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for quiz in quizzes %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>@{{ quiz.player.user.username }}</td>
+          <td>{{ quiz.score }}</td>
+          <td>{{ quiz.time }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
