@@ -101,3 +101,9 @@ input, textarea{
 #ranking{
     padding-top: 50px;
 }
+
+#fondo_chacu {
+    background: url("../img/chacu_home.png") no-repeat center;
+    background-size: cover;
+    min-height: 100vh;
+  }
