@@ -1,0 +1,160 @@
+
+/*header*/
+@font-face {
+    font-family: 'burbank-big';
+    src: url('../fonts/burbank-big.ttf');
+    font-style: normal;
+}
+
+
+#navbar_chacu {
+    background-color: #95C11F !important;
+    font-family:'burbank-big', 'montserrat';
+    font-size: 30px;
+    letter-spacing: 1px;    
+  }
+
+#header_chacu {
+    background: url("../img/chacu_home.png") no-repeat center;
+    background-size: cover;
+    min-height: 100vh;
+  }
+
+#home{   
+    text-align: center;         
+}
+
+#home h2{   
+    color: #ffffff;
+    background-color: #ff7d26 !important;
+}
+
+#inicio{
+    background-color: aqua;   
+}
+
+#logo {   
+    width: 35%;   
+}
+
+/*acceso - registro*/
+#modal {
+    padding: 40px;
+    background-color: #95C11F;
+    text-align: center;
+    color: #ffffff;     
+    
+}
+
+#modal h2{
+    font-family: 'burbank-big';
+    font-size: 50px;
+    letter-spacing: 1px; 
+    
+}
+
+/*jugabilidad*/
+
+.separar {
+    padding-top: 40px;  
+    padding-bottom: 40px;   
+}
+
+#jugabilidad h2{
+    font-family: 'burbank-big';
+    font-size: 50px;
+    letter-spacing: 1px; 
+    text-align: center;
+}
+
+#etapas p{
+    text-align: justify;
+}
+
+#etapas h5{
+    text-align: center;
+}
+
+
+
+/*Seccion contacto */
+input, textarea{
+    margin-bottom: 10px;
+}
+#contacto {
+    padding: 50px;
+    background-color: #ff7d26;
+    color: #fff;
+}
+
+
+/*title*/
+.title {
+    font-family: 'burbank-big';
+    font-size: 50px;
+    letter-spacing: 1px;
+}
+
+.sub_title {
+    font-family: 'burbank-big';
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+/*PAGINA ACERCA DE */
+
+#acerca_de, #niveles, #modos_de_juego, #reglas {
+    padding-top: 50px;
+}
+#info h2 {
+    font-family: 'burbank-big';
+    font-size: 50px;
+    letter-spacing: 1px;
+}  
+
+#info_juego p {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: justify;
+}
+#texto {
+    padding-top: 30px;
+}
+
+#texto p {
+    font-size: 18px;
+    text-align: justify;  
+
+}
+
+#niveles {
+    background-color: #95C11F;
+    color: #fff;
+}
+
+#modos_de_juego {
+    background-color: #8e4bfa;
+    color: #fff;
+}
+#reglas p{
+    text-align: justify;
+    font-size: 16px;
+}
+
+/*PAGINA CREADORES */
+#creadores{
+    padding-top: 50px;
+}
+
+
+/*PAGINA RANKING */
+#ranking{
+    padding-top: 50px;
+}
+
+
+/*FOOTER*/
+
+#footer{
+    background-color: #e6e6e6;
+}
