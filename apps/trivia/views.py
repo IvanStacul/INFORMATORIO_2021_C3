@@ -147,8 +147,8 @@ def config(request: HttpRequest):
 
         # elegir las preguntas que participan en la trivia
         questions = Question.objects.filter(
-            category_id=1,
-            level_id=1
+            category_id=category,
+            level_id=level
         ).order_by('?')[:settings.QUESTION_LIMIT]
 
         # si no hay preguntar para elegir enviamos un error
