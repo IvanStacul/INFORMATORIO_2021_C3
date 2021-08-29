@@ -6,15 +6,15 @@ from django.shortcuts import render
 from apps.trivia.models import Quiz
 
 def home(request: HttpRequest):
-    return render(request, 'core/home.html')
+    return render(request, 'index.html')
 
 
-def about(request):
-    pass
+def about(request: HttpRequest):
+    return render(request, 'core/acerca_de.html')
 
 
 def us(request):
-    pass
+    return render(request, 'core/creadores.html')
 
 
 def contact(request):

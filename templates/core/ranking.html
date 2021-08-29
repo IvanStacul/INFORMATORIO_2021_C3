@@ -1,28 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}Ranking{% endblock title %}
+{% block title %} Ranking Chacú-py {% endblock title %}
 {% block content %}
-<div class="row">
-  <div class="col-10 offset-1 pt-5">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Username</th>
-          <th scope="col">Score</th>
-          <th scope="col">Time</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for quiz in quizzes %}
-        <tr>
-          <th scope="row">{{ forloop.counter }}</th>
-          <td>@{{ quiz.player.user.username }}</td>
-          <td>{{ quiz.score }}</td>
-          <td>{{ quiz.time }}</td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+  {% load static %}
+  <header>{% include 'includes/nav.html' %}</header>
+
+  <section class="container" id="ranking">
+    <div class="row" id="info">
+      <h1>Ranking Chacú-py</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Puesto</th>
+            <th scope="col">Jugador</th>
+            <th scope="col">Tiempo</th>
+            <th scope="col">Puntos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for quiz in quizzes %}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>@{{ quiz.player.user.username }}</td>
+              <td>{{ quiz.time }}</td>
+              <td>{{ quiz.score }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {% include 'includes/footer.html' %}
 {% endblock content %}

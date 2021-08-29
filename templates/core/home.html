@@ -1,9 +1,9 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block title %} Chacú.py {% endblock title %}
 {% block styles %}
-{% load static %}
-<link href="{% static 'css/cover.css' %}" rel="stylesheet" />
-{% endblock styles %} 
+  {% load static %}
+  <link href="{% static 'css/cover.css' %}" rel="stylesheet" />
+{% endblock styles %}
 {% block content %}
 	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 		<header class="masthead mb-auto">

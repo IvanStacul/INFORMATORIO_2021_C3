@@ -1,58 +1,20 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>Chacú.py</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-</head>
-
-<body>
+{% extends 'base.html' %}
+{% block title %} Chacú.py {% endblock title %}
+{% block content %}
+  {% load static %}
 	<header id="header_chacu">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid" id="navbar_chacu">
-				<a class="navbar-brand" href="#Inicio"><img src="img/logo_chacu_py.png" alt="chacú_py" class="img-fluid float-left"></a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#chacu_navbar"
-					aria-controls="chacu_navbar" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="chacu_navbar">
-					<ul class="nav navbar-nav mr-auto">
-						<li class="nav-item" >
-							<a class="nav-link" href="page/acerca_de.html">Acerca de</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="page/creadores.html">Creadores</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="page/ranking.html">Ranking</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-bs-toggle="modal" data-bs-target="#chacu_modal-login">JUGAR</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#Contacto">Contacto</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+    {% include 'includes/nav.html' %}
 		<div class="container" id="home">
 			<div class="row">
 				<div class="col-lg-12">
-					<img src="img/isotipo_chacu.png" id="logo">
-					<img src="img/btn/text_home.png" class="img-fluid">
-					<img src="img/btn/btn-jugar.png" class="img-fluid" data-bs-toggle="modal"
+					<img src="{% static 'img/isotipo_chacu.png' %}" id="logo">
+					<img src="{% static 'img/btn/text_home.png' %}" class="img-fluid">
+					<img src="{% static 'img/btn/btn-jugar.png' %}" class="img-fluid" data-bs-toggle="modal"
 						data-bs-target="#chacu_modal-login"></a>
 				</div>
 			</div>
 		</div>
 	</header>
-
 
 	<section>
 		<div class="container-fluid" id="modal">
@@ -63,7 +25,7 @@
 					<h4>CHACÚ.py es un juego gratuito, didáctico y de habilidad, donde el jugador debe contestar
 						preguntas sobre conocimientos generales en torno a la Provincia el Chaco.</h4>
 					<br>
-					<img src="img/btn/btn-crear.png" class="boton" data-bs-toggle="modal"
+					<img src="{% static 'img/btn/btn-crear.png' %}" class="boton" data-bs-toggle="modal"
 						data-bs-target="#chacu_modal"></a>
 				</div>
 			</div>
@@ -188,7 +150,7 @@
 			<div class="row" id="etapas">
 				<div class="col-lg-4">
 					<div class="card">
-						<img src="img/paso_1.png" class="card-img-top" alt="...">
+						<img src="{% static 'img/paso_1.png' %}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">Iniciá un nueva partida</h5>
 							<p class="card-text">Para comenzar una partida, el Jugador deberá estar previamente
@@ -199,7 +161,7 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="card">
-						<img src="img/paso_2.png" class="card-img-top" alt="...">
+						<img src="{% static 'img/paso_2.png' %}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">Seleccioná el nivel de dificultad</h5>
 							<p class="card-text">El Jugador debe seleccionar el nivel de dificultad deseado entre los
@@ -210,7 +172,7 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="card">
-						<img src="img/paso_3.png" class="card-img-top" alt="...">
+						<img src="{% static 'img/paso_3.png' %}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">Elegí la categoría que desees</h5>
 							<p class="card-text">Finalmente, el Jugador debe seleccionar la categoría deseada para la
@@ -317,17 +279,6 @@
 		</div>
 	</section>
 
-	<footer>
-		<section>
-			<div class="container">
-				<div class="col-12">
-					<center><h1>Proyecto Informatorio 2021 - Grupo 4</h1> </center>
-				</div>
-			</div>
-		</section>
-
-	</footer>
-
 	<script type="text/javascript">
 		(function () {
 			'use strict'
@@ -346,9 +297,6 @@
 				})
 		})()
 	</script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-		crossorigin="anonymous"></script>
-</body>
 
-</html>
+  {% include 'includes/footer.html' %}
+{% endblock content %}

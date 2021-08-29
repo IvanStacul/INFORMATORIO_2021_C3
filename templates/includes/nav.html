@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid" id="navbar_chacu">
+    <a class="navbar-brand" href="#Inicio"
+      ><img
+      {% load static %}
+        src="{% static 'img/logo_chacu_py.png' %}"
+        alt="chacú_py"
+        class="img-fluid float-left"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#chacu_navbar"
+      aria-controls="chacu_navbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="chacu_navbar">
+      <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'us' %}">Creadores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ranking' %}">Ranking</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-bs-toggle="modal"
+            data-bs-target="#chacu_modal-login"
+            >JUGAR</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Contacto">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
