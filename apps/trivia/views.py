@@ -214,3 +214,15 @@ def config(request: HttpRequest):
             'categories': Category.objects.all(),
         }
     )
+
+def fin(request: HttpRequest):
+    return render(request, 'trivia/fin.html')
+
+def pregunta(request: HttpRequest):
+    return render(request, 'trivia/pregunta.html')
+
+def sabias(request: HttpRequest):
+    return render(request, 'trivia/sabias.html')
+
+def configuracion(request: HttpRequest):
+    return render(request, 'trivia/configuracion.html')
