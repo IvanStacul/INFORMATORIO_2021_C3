@@ -1,0 +1,71 @@
+{% load static %}
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{% url 'panel' %}" class="brand-link">
+    <img src="{% static 'admin/img/logo.png' %}" alt="Logo" class="brand-image">
+    <span class="brand-text font-weight-bold">CHACÚ.PY</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="{% static 'admin/img/admin.png' %}" class="img-circle elevation-2" alt="Imagen de usuario">
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">Administrador</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item has-treeview
+        {% if not request.path == 'panel' %} menu-open {% endif %}
+        ">
+          <a href="#" class="nav-link
+           {% if not request.path == 'panel' %} active {% endif %}
+          ">
+            <i class="nav-icon fas fa-exclamation"></i>
+            <p>
+              Trivias
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'trivia_config' %}" class="nav-link
+              {% if request.path == '/panel/trivia/configuracion' %} active {% endif %}
+              ">
+                <i class="fa fa-cog nav-icon"></i>
+                <p>Configurarion</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{% url 'trivia_questions' %}" class="nav-link
+              {% if request.path == '/panel/trivia/preguntas' %} active {% endif %}
+              ">
+                <i class="fa fa-question nav-icon"></i>
+                <p>Preguntas</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{% url 'trivia_options' %}" class="nav-link
+              {% if request.path == '/panel/trivia/opciones' %} active {% endif %}
+              ">
+                <i class="fa fa-th-list nav-icon"></i>
+                <p>Opciones</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

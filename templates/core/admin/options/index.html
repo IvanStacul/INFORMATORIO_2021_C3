@@ -1,0 +1,257 @@
+{% extends 'core/admin/app.html' %} {% load static %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{% static 'admin/plugins/select2/css/select2.min.css' %}"
+/>
+<link
+  rel="stylesheet"
+  href="{% static 'admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}"
+/>
+<link
+  rel="stylesheet"
+  href="{% static 'admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}"
+/>
+{% endblock style %} {% block 'header-content' %}
+<h1 class="m-0 text-dark text-bold">Opciones</h1>
+{% endblock 'header-content' %} {% block 'main-content' %}
+
+{% include 'core/admin/status.html' %}
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title">Ingrese los datos del categoria</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form
+          class="form-horizontal"
+          method="POST"
+          action="{% url 'trivia_options' %}"
+        >
+          {% csrf_token %}
+          <div class="card-body">
+            <p class="text-bold">
+              <span style="color: red">*</span> Campos obligatorios
+            </p>
+            <hr />
+
+            {# Question and level #}
+            <div class="row">
+              {# Question #}
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <!-- select -->
+                  <label for="question_id"
+                    >Pregunta <span style="color: red">*</span></label
+                  >
+                  <select
+                    {% comment %} required {% endcomment %}
+                    class="form-control select2"
+                    style="width: 100%"
+                    name="question_id"
+                  >
+                    <option value="" selected>Seleccione una pregunta</option>
+                    {% for question in questions %}
+                    <option value="{{question.id}}">{{question.content}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+
+              {# Level #}
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <!-- select -->
+                  <label for="level_id"
+                    >Nivel <span style="color: red">*</span></label
+                  >
+                  <select
+                    {% comment %} required {% endcomment %}
+                    class="form-control select2"
+                    style="width: 100%"
+                    name="level_id"
+                  >
+                    <option value="" selected>Seleccione una nivel</option>
+                    {% for level in levels %}
+                    <option value="{{level.id}}">{{level.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {# Content #}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="content"
+                    >Contenido <span style="color: red">*</span></label
+                  >
+                  <input
+                    {% comment %} required {% endcomment %}
+                    type="text"
+                    id="content"
+                    class="form-control"
+                    name="content"
+                    placeholder="Contenido ..."
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+
+            {# IsCorrect #}
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="isCorrect"
+                    />
+                    <label class="form-check-label">Es correcta</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-info float-right">Crear</button>
+          </div>
+          <!-- /.card-footer -->
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+
+  {# Stored Questions #}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Todas las opciones cargadas</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          {% if options %}
+          <table id="example1" class="table table-bordered table-striped">
+            {# Header #}
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Pregunta</th>
+                <th>Opción</th>
+                <th>Nivel</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+
+            {# Data #}
+            <tbody>
+              {% for option in options %}
+              <tr>
+                <td>{{option.id}}</td>
+                <td>{{option.question.content}}</td>
+                <td>{{option.content}}</td>
+                <td>{{option.level}}</td>
+                <td>
+                  <a href="{% url 'trivia_options_edit' option_id=option.id %}" class="btn btn-info btn-sm">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </td>
+                <td>
+                  <form method="POST" action="{% url 'trivia_options' %}">
+                    {% csrf_token %}
+                    <input
+                      type="text"
+                      name="option_id"
+                      hidden
+                      value="{{ option.id }}"
+                    />
+                    <button class="btn btn-danger btn-sm" type="submit">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+            {# Footer #}
+            <tfoot>
+              <tr>
+                <th>Id</th>
+                <th>Pregunta</th>
+                <th>Opción</th>
+                <th>Nivel</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </tfoot>
+          </table>
+          {% else %}
+          <div class="alert alert-warning alert-dismissible">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-hidden="true"
+            >
+              &times;
+            </button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+            Todavia no se cargaron opciones
+          </div>
+          {% endif %}
+        </div>
+        <!-- /.card-body -->
+      </div>
+    </div>
+  </div>
+{% endblock 'main-content' %}
+
+{% block script %}
+  <script src="{% static 'admin/plugins/select2/js/select2.full.min.js' %}"></script>
+  <script src="{% static 'admin/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'admin/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+  <script src="{% static 'admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+  <script>
+    $(".select2").select2();
+    $(function () {
+      $("#example1").DataTable({
+        responsive: true,
+        autoWidth: false,
+        columnDefs: [
+          { orderable: false, targets: [0, 1] },
+          { visible: false, targets: 0 },
+        ],
+        order: [[0, "desc"]],
+        language: {
+          lengthMenu: "Display _MENU_ records per page",
+          zeroRecords: "Nada que mostrar",
+          info: "Mostrando página _PAGE_ de _PAGES_",
+          infoEmpty: "No hay filas disponibles",
+          infoFiltered: "(filtrados _MAX_ del total de filas)",
+          search: "Burscar",
+          paginate: {
+            first: "Primero",
+            last: "Último",
+            next: "Siguiente",
+            previous: "Anterior",
+          },
+          lengthMenu: "Mostrando _MENU_ filas",
+          loadingRecords: "Cargando...",
+          processing: "Procesando...",
+        },
+      });
+    });
+  </script>
+{% endblock script %}

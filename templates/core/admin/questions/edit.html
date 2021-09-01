@@ -1,0 +1,149 @@
+{% extends 'core/admin/app.html' %}
+{% load static %}
+{% block style %}
+  <link
+    rel="stylesheet"
+    href="{% static 'admin/plugins/select2/css/select2.min.css' %}"
+  />
+{% endblock style %}
+
+{% block 'header-content' %}
+  <h1 class="m-0 text-dark text-bold">Preguntas</h1>
+{% endblock 'header-content' %}
+
+{% block 'main-content' %}
+  {% include 'core/admin/status.html' %}
+  {# Form questions #}
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title">Ingrese los datos de la categoria</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form
+          class="form-horizontal"
+          method="POST"
+          action="{% url 'trivia_questions_edit' question_id=question_edit.id %}"
+        >
+          {% csrf_token %}
+          <div class="card-body">
+            <p class="text-bold">
+              <span style="color: red">*</span> Campos obligatorios
+            </p>
+            <hr />
+
+            {# level and category input #}
+            <div class="row">
+              {# Category #}
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <!-- select -->
+                  <label for="category_id"
+                    >Categoría <span style="color: red">*</span></label
+                  >
+                  <select
+                    required
+                    class="form-control select2"
+                    style="width: 100%"
+                    name="category_id"
+                  >
+                    <option value="" selected>Seleccione una Categoría</option>
+                    {% for category in categories %}
+                    <option value="{{category.id}}"
+                      {% if question_edit.category_id == category.id %}
+                      selected
+                      {% endif %}
+                    >
+                      {{category.name}}
+                    </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+
+              {# Level #}
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <!-- select -->
+                  <label for="level_id"
+                    >Nivel <span style="color: red">*</span></label
+                  >
+                  <select
+                    required
+                    class="form-control select2"
+                    style="width: 100%"
+                    name="level_id"
+                  >
+                    <option value="" selected>Seleccione una nivel</option>
+                    {% for level in levels %}
+                    <option value="{{level.id}}"
+                      {% if question_edit.level_id == level.id %}
+                      selected
+                      {% endif %}
+                    >
+                      {{level.name}}
+                    </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {# content input #}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="content"
+                    >Contenido <span style="color: red">*</span></label
+                  >
+                  <input
+                    required
+                    type="text"
+                    id="content"
+                    class="form-control"
+                    name="content"
+                    placeholder="Contenido ..."
+                    value="{{question_edit.content}}"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {# description input #}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="description"
+                    >Descripción</label
+                  >
+                  <textarea
+                    id="description"
+                    class="form-control"
+                    name="description"
+                    placeholder="Descripción ..."
+                    rows="5"
+                    value="{{question_edit.description}}"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-info float-right">Crear</button>
+          </div>
+          <!-- /.card-footer -->
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+{% endblock 'main-content' %}
+
+{% block script %}
+  <script src="{% static 'admin/plugins/select2/js/select2.full.min.js' %}"></script>
+{% endblock script %}

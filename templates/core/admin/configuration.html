@@ -1,0 +1,195 @@
+{% extends 'core/admin/app.html' %}
+{% load static %}
+
+{% block 'header-content' %}
+  <h1 class="m-0 text-dark text-bold">Configuración</h1>
+{% endblock 'header-content' %}
+
+{% block 'main-content' %}
+  {% include 'core/admin/status.html' %}
+  <div class="row">
+    {# Form level #}
+    <div class="col-md-6">
+      <!-- Horizontal Form -->
+      <div class="card card-info">
+
+        <div class="card-header">
+          <h3 class="card-title">Ingrese los datos del nivel</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form class="form-horizontal" method="POST" action="{% url 'trivia_config' %}">
+          {% csrf_token %}
+          <div class="card-body">
+            <p class="text-bold"><span style="color:red">*</span> Campos obligatorios</p>
+            <hr>
+
+            <div class="form-group">
+              <label for="level" class="col-form-label">Nombre del nivel<span style="color:red">*</span> </label>
+              <input type="text" id="level" class="form-control" name="category" placeholder="Ingrese un nombre ..."
+                value="">
+            </div>
+          </div> <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-info float-right">Crear</button>
+          </div> <!-- /.card-footer -->
+
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+
+    {# Form Category #}
+    <div class="col-md-6">
+      <!-- Horizontal Form -->
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title">Ingrese los datos de la categoría</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form class="form-horizontal" method="POST" action="{% url 'trivia_config' %}">
+          {% csrf_token %}
+          <div class="card-body">
+            <p class="text-bold"><span style="color:red">*</span> Campos obligatorios</p>
+            <hr>
+
+            <div class="form-group">
+              <label for="category" class="col-form-label">Nombre de categoría<span style="color:red">*</span> </label>
+              <input type="text" id="category" class="form-control" name="category" placeholder="Ingrese un nombre ..."
+                value="">
+            </div>
+          </div> <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-info float-right">Crear</button>
+          </div> <!-- /.card-footer -->
+
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+
+  <div class="row">
+    {# Stored levels #}
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Todas los niveles cargados</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          {% if levels %}
+          <table id="example1" class="table table-bordered table-striped">
+            {# Headers #}
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Fecha de creación</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+
+            {# Data #}
+            <tbody>
+              {% for level in levels %}
+              <tr>
+                <td>{{ level.name }}</td>
+                <td>{{ level.created }}</td>
+                <td>
+                  <form method="POST" action="{% url 'trivia_config' %}">
+                    <input type="text" hidden name="level_id" value="{{ level.id }}">
+                    {% csrf_token %}
+                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash"></i></button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+            {# Footer #}
+            <tfoot>
+              <tr>
+                <th>Nombre</th>
+                <th>Fecha de creación</th>
+                <th>Eliminar</th>
+              </tr>
+            </tfoot>
+          </table>
+          {% else %}
+          <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+            Todavia no se cargaron niveles
+          </div>
+          {% endif %}
+
+        </div>
+        <!-- /.card-body -->
+      </div>
+    </div>
+
+    {# Stored Categories #}
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Todas las categorías cargadas</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          {% if categories %}
+          <table id="example1" class="table table-bordered table-striped">
+
+            {# Headers #}
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Fecha de creación</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+
+            {# Data #}
+            <tbody>
+              {% for category in categories %}
+              <tr>
+                <td>{{ category.name }}</td>
+                <td>{{ category.created }}</td>
+                <td>
+                  <form method="POST" action="{% url 'trivia_config' %}">
+                    {% csrf_token %}
+                    <input type="text" name="category_id" hidden value="{{ category.id }}">
+                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash"></i></button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+            {# Footer #}
+            <tfoot>
+              <tr>
+                <th>Nombre</th>
+                <th>Fecha de creación</th>
+                <th>Eliminar</th>
+              </tr>
+            </tfoot>
+
+          </table>
+          {% else %}
+          <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+            Todavia no se cargaron niveles
+          </div>
+          {% endif %}
+
+        </div>
+        <!-- /.card-body -->
+      </div>
+    </div>
+  </div>
+{% endblock 'main-content' %}
+
