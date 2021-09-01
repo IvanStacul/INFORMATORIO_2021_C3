@@ -225,4 +225,4 @@ def sabias(request: HttpRequest):
     return render(request, 'trivia/sabias.html')
 
 def configuracion(request: HttpRequest):
-    return render(request, 'trivia/configuracion.html')
+    return render(request, 'trivia/set_partida.html')
