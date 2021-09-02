@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+{% block title %} Configuración de Nueva Partida{% endblock title %}
+{% block content %}
+  {% load static %}
+	<header>
+       {% include 'includes/nav.html' %}
+	</header>
+
+    <section>
+		<div class="container" id="modos_de_juego">				
+					<div class="row">					
+							<div class="col-md-6 col text-center">
+								<div class="media">									
+									<div class="media-body">
+										<h5 class="mt-0 sub_title">@Jugador</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col text-center">
+								<h2 class="sub_title">Tus puntos:</h2>								
+							</div>
+					</div>
+				</br>					
+			</div>
+		</div>
+		<div class="container" id="play">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h2 class="sub_title">Preguntas del desafío</h2>	
+						<br>
+						<div id="pregunta">									
+							<h4>¿En que año fue institucionalizado Chaco?</h4>	
+							<br>			
+							<div class="row align-self-center">							
+								<div class="form-check col-md-4">
+									<input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+									<label class="btn btn-success" for="btn-check">Opción 1</label>
+								</div>							
+								<div class="form-check col-md-4">
+									<input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+									<label class="btn btn-success" for="btn-check">Opción 1</label>
+								</div>							
+								<div class="form-check col-md-4">
+									<input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+									<label class="btn btn-success" for="btn-check">Opción 1</label>
+								</div>
+							</div>								
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 text-center" id="nav_preg">
+					</div><div class="row">
+						<div class="col-md-6" id="left">							
+								<a href="#"><img src="{% static 'img/btn/ant_.png' %}" class="bot" style="max-width: 30%"></a>			
+						</div>
+
+						<div class="col-md-6" id="right">							
+								<a href="#"><img src="{% static 'img/btn/sig_.png' %}" class="bot" style="max-width: 30%"></a>		
+						</div>												
+					</div>					
+					<div class="row">
+						<div class="col-md-12 col text-center ">						
+							<div class="progress" style="height: 30px">						
+								<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%</div>
+							</div>
+						</div>
+					</div>
+					</br>
+				</div>			
+		</div>
+	</section>	
+ {% include 'includes/footer.html' %}
+{% endblock content %}
