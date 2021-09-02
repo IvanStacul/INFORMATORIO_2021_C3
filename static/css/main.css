@@ -149,11 +149,11 @@ input, textarea{
 }
 
 
-#left{
+.left{
     text-align: right;
 }
 
-#right{
+.right{
     text-align: left;
 }
 
@@ -218,4 +218,30 @@ input, textarea{
     padding: 30px 60px 30px 50px;
     border-radius: 0 0 20px 20px;
     height: auto;    
+}
+
+#fin{
+    background: url("../img/chacu_home.png") no-repeat center;    
+    margin-bottom: 50px;    
+    padding: 30px 60px 30px 60px;
+    border-radius: 0 0 20px 20px;
+    height: auto;
+}
+
+#detalle{
+    background: url("../img/detalle_back.png") no-repeat center; 
+    background-size: cover;      
+    padding-top: 60px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+    height: 500px;
+    color: #ffffff;
+}
+
+#opciones {
+    padding: 20px 70px 20px 70px;
+}
+
+#punt {
+    padding: 20px;
 }
