@@ -1,6 +1,6 @@
 
 {% extends 'base.html' %}
-{% block title %} Configuración de Nueva Partida{% endblock title %}
+{% block title %}Trivia de preguntas{% endblock title %}
 {% block content %}
   {% load static %}
 	<header>
@@ -10,14 +10,13 @@
     <section>
 		<div class="container" id="modos_de_juego">				
 					<div class="row">					
-							<div class="col-md-6 col text-center">
-								<div class="media">									
-									<div class="media-body">
-										<h5 class="mt-0 sub_title">@Jugador</h5>
-									</div>
-								</div>
+							<div class="col-md-4 col text-center">								
+								<h2 class="sub_title">@Jugador</h2>							
+							</div>								
+							<div class="col-md-4 col text-center">
+								<h2 class="sub_title">Categoría:</h2>								
 							</div>
-							<div class="col-md-6 col text-center">
+							<div class="col-md-4 col text-center">
 								<h2 class="sub_title">Tus puntos:</h2>								
 							</div>
 					</div>
@@ -52,11 +51,11 @@
 
 				<div class="col-md-12 text-center" id="nav_preg">
 					</div><div class="row">
-						<div class="col-md-6" id="left">							
+						<div class="col-md-6 left">							
 								<a href="#"><img src="{% static 'img/btn/ant_.png' %}" class="bot" style="max-width: 30%"></a>			
 						</div>
 
-						<div class="col-md-6" id="right">							
+						<div class="col-md-6 right">							
 								<a href="#"><img src="{% static 'img/btn/sig_.png' %}" class="bot" style="max-width: 30%"></a>		
 						</div>												
 					</div>					
