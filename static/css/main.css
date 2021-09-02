@@ -11,8 +11,8 @@
     background-color: #95C11F !important;
     font-family:'burbank-big', 'montserrat';
     font-size: 30px;
-    letter-spacing: 1px;
-}
+    letter-spacing: 1px;    
+  }
 
 #header_chacu {
     background: url("../img/chacu_home.png") no-repeat center;
@@ -20,21 +20,21 @@
     min-height: 100vh;
   }
 
-#home{
-    text-align: center;
+#home{   
+    text-align: center;         
 }
 
-#home h2{
+#home h2{   
     color: #ffffff;
     background-color: #ff7d26 !important;
 }
 
 #inicio{
-    background-color: aqua;
+    background-color: aqua;   
 }
 
-#logo {
-    width: 35%;
+#logo {   
+    width: 35%;   
 }
 
 /*acceso - registro*/
@@ -42,28 +42,28 @@
     padding: 40px;
     background-color: #95C11F;
     text-align: center;
-    color: #ffffff;
-
+    color: #ffffff;     
+    
 }
 
 #modal h2{
     font-family: 'burbank-big';
     font-size: 50px;
-    letter-spacing: 1px;
-
+    letter-spacing: 1px; 
+    
 }
 
 /*jugabilidad*/
 
 .separar {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 40px;  
+    padding-bottom: 40px;   
 }
 
 #jugabilidad h2{
     font-family: 'burbank-big';
     font-size: 50px;
-    letter-spacing: 1px;
+    letter-spacing: 1px; 
     text-align: center;
 }
 
@@ -110,7 +110,7 @@ input, textarea{
     font-family: 'burbank-big';
     font-size: 50px;
     letter-spacing: 1px;
-}
+}  
 
 #info_juego p {
     font-size: 20px;
@@ -123,12 +123,12 @@ input, textarea{
 
 #texto p {
     font-size: 18px;
-    text-align: justify;
+    text-align: justify;  
 
 }
 
-
-.bot:hover {-webkit-transform:scale(1.2);transform:scale(1.2);
+.bot:hover {
+    -webkit-transform:scale(1.2);transform:scale(1.2);
 }
 .bot {overflow:hidden;
 }
@@ -141,17 +141,28 @@ input, textarea{
 #play {
     background-color: #95C11F;
     color: #fff;
-    margin-bottom: 50px;
-    padding-top: 20px;
+    margin-bottom: 50px;    
+    padding: 30px 60px 30px 60px;
     border-radius: 0 0 20px 20px;
+    height: auto;
+    
 }
 
+
+#left{
+    text-align: right;
+}
+
+#right{
+    text-align: left;
+}
 
 #modos_de_juego {
     background-color: #8e4bfa;
     color: #fff;
-    padding-top: 10px;
+    padding: 30px 30px 10px 10px;
     border-radius: 20px 20px 0 0;
+    margin-top: 20px;
 }
 
 #reglas p{
@@ -175,4 +186,17 @@ input, textarea{
 
 #footer{
     background-color: #e6e6e6;
+}
+
+/*TRIVIA*/
+
+#pregunta{
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    color: black;
+}
+
+#nav_preg{
+    padding: 10px;
 }
