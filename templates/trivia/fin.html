@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Partida Finalizada{% endblock title %}
+{% block content %}
+  {% load static %}
+	<header>
+       {% include 'includes/nav.html' %}
+	</header>
+
+  	<section>		
+		<div class="container" id="fin">
+				<div class="row" id="detalle">
+					<div class="col-md-12 text-center">				
+						<h2 class="title">Partida Finalizada!!</h2>		
+						<h2 class="sub_title">Felicidades @Jugador</h2>	
+						<div class="row" id="punt">		
+							<div class="col-md-6 left">									
+								<h2 class="title">Puntos obtenidos:</h2>						
+							</div>		
+							<div class="col-md-6">	
+								<h2 class="title">#0120</h2>						
+							</div>						
+						</div>
+									
+						<div class="row" id="opciones">
+							<div class="col-md-4">	
+							<a href="#"><img src="{% static 'img/btn/home.png" class="bot" style="max-width: 80%"></a>	
+							</div>
+							<div class="col-md-4">	
+							<a href="#"><img src="{% static 'img/btn/rank.png" class="bot" style="max-width: 80%"></a>	
+							</div>					
+							<div class="col-md-4">	
+							<a href="#"><img src="{% static 'img/btn/nuevo.png" class="bot" style="max-width: 80%"></a>	
+							</div>
+						</div>
+					</div>
+				</div>		
+		</div>
+	</section>	
+{% include 'includes/footer.html' %}
+{% endblock content %}
+	
