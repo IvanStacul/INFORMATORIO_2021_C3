@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %} Configuración de Nueva Partida{% endblock title %}
+{% block content %}
+  {% load static %}
+	<header>
+       {% include 'includes/nav.html' %}
+	</header>
+
+  	<section>
+		<div class="container" id="modos_de_juego">				
+					<div class="row">					
+							<div class="col-md-6 col text-center">
+								<div class="media">									
+									<div class="media-body">
+										<h5 class="mt-0 sub_title">@Jugador</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col text-center">
+								<h2 class="sub_title"> Tus puntos:</h2>								
+							</div>
+					</div>
+				</br>	
+		</div>
+		<div class="container" id="correcto">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h2 class="title">CORRECTO!!</h2>	
+						<br>
+						<div id="pregunta">		
+							<h2 class="sub_title">Sabias que?...</h2>									
+							<div class="row align-self-center">							
+								<p>El Congreso de la Nación dispuso por ley 14037 del 8 de agosto de 1951 crear una nueva provincia que tuviera jurisdicción en lo que hasta ese momento había sido el territorio nacional del Chaco. La misma se constituyó en 1952, mediante una asamblea constituyente democráticamente electa, que sesionó entre el 17 y el 21 de diciembre de 1951, sancionando la constitución provincial y eligiendo el nombre que habría de designar: «provincia Presidente Perón».
+								La nueva constitución provincial introdujo como novedad en el sistema político argentino al establecer que la mitad de los miembros de la Cámara de Representantes sería elegida por votación popular y la otra mitad "será elegida por los ciudadanos que pertenezcan a las entidades profesionales que se rigen por la ley nacional de asociaciones profesionales, debiendo estar integrada la lista de candidatos con miembros de esas entidades".
+								</p>
+							</div>								
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 text-center" id="nav_preg">
+						<a href="#"><img src="{% static 'img/btn/reanudar.png' %}" class="bot" style="max-width: 30%"></a>															
+					</div>					
+					</br>
+				</div>			
+		</div>
+	</section>	
+{% include 'includes/footer.html' %}
+{% endblock content %}
+	
