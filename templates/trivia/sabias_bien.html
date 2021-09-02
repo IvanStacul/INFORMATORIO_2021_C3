@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Configuración de Nueva Partida{% endblock title %}
+{% block title %}Respuesta Correcta{% endblock title %}
 {% block content %}
   {% load static %}
 	<header>
@@ -9,16 +9,15 @@
   	<section>
 		<div class="container" id="modos_de_juego">				
 					<div class="row">					
-							<div class="col-md-6 col text-center">
-								<div class="media">									
-									<div class="media-body">
-										<h5 class="mt-0 sub_title">@Jugador</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 col text-center">
-								<h2 class="sub_title"> Tus puntos:</h2>								
-							</div>
+						<div class="col-md-4 col text-center">								
+							<h2 class="sub_title">@Jugador</h2>							
+						</div>								
+						<div class="col-md-4 col text-center">
+							<h2 class="sub_title">Categoría:</h2>								
+						</div>
+						<div class="col-md-4 col text-center">
+							<h2 class="sub_title">Tus puntos:</h2>								
+						</div>
 					</div>
 				</br>	
 		</div>
