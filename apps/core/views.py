@@ -6,7 +6,9 @@ from django.core import serializers
 
 # Models
 from apps.trivia.models import Category, Level, Option, Question, Quiz
-from apps.players.models import Player
+from apps.players.models import Log, Player
+
+from datetime import date, datetime
 
 
 def home(request: HttpRequest):
@@ -33,14 +35,30 @@ def ranking(request: HttpRequest):
     return render(request, 'core/ranking.html', context={'quizzes': quizzes})
 
 
-def chart_report(request: HttpRequest):
-    return render(request, 'core/charts.html')
-
-
 def pivot_data(request: HttpRequest):
-    dataset = Quiz.objects.all()
-    data = serializers.serialize('json', dataset)
+    dates = []
+    values = []
+
+    if request.GET.get('chart') == 'games':
+        data = Quiz.objects.raw(
+            'SELECT COUNT(*) AS "RESULT", DATE("end") AS "END", id FROM trivia_quiz GROUP BY DATE("end")')
+        for d in data:
+            dates.append(d.END)
+            values.append(d.RESULT)
+    if request.GET.get('chart') == 'logs':
+        data = Log.objects.raw(
+            'SELECT COUNT(*) AS "RESULT", DATE("date") AS "DATE", pl.id FROM players_log pl GROUP BY DATE("date")')
+        for d in data:
+            dates.append(d.DATE)
+            values.append(d.RESULT)
+
+    data = {
+        'dates': dates[-6:],
+        'values': values,
+    }
+
     return JsonResponse(data, safe=False)
+
 
 @login_required
 def admin_panel(request: HttpRequest):
@@ -49,6 +67,7 @@ def admin_panel(request: HttpRequest):
         'quiz_count': Quiz.objects.count(),
     }
     return render(request, 'core/admin/panel.html', context)
+
 
 @login_required
 def trivia_config(request: HttpRequest):
@@ -75,6 +94,7 @@ def trivia_config(request: HttpRequest):
             Level.objects.filter(pk=level_id).delete()
         return redirect('trivia_config')
     return render(request, 'core/admin/configuration.html', context)
+
 
 @login_required
 def trivia_questions(request: HttpRequest):
@@ -106,6 +126,7 @@ def trivia_questions(request: HttpRequest):
 
     return render(request, 'core/admin/questions/index.html', context)
 
+
 @login_required
 def trivia_question_edit(request: HttpRequest, question_id: int):
     context = {
@@ -129,6 +150,7 @@ def trivia_question_edit(request: HttpRequest, question_id: int):
         return redirect('trivia_questions')
 
     return render(request, 'core/admin/questions/edit.html', context)
+
 
 @login_required
 def trivia_options(request: HttpRequest):
@@ -165,6 +187,7 @@ def trivia_options(request: HttpRequest):
             return redirect('trivia_options')
 
     return render(request, 'core/admin/options/index.html', context)
+
 
 @login_required
 def trivia_option_edit(request: HttpRequest, option_id: int):

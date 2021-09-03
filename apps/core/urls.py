@@ -7,7 +7,6 @@ urlpatterns = [
     path('nosotros', views.us, name='us'),
     path('ranking', views.ranking, name='ranking'),
     path('contacto', views.contact, name='contact'),
-    path('charts', views.chart_report, name='charts'),
     path('data', views.pivot_data, name='pivot_data'),
     path('panel', views.admin_panel, name='panel'),
     path('panel/trivia/configuracion', views.trivia_config, name='trivia_config'),

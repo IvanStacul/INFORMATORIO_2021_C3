@@ -6,7 +6,7 @@ from django.http import HttpRequest
 
 # Models
 from django.contrib.auth.models import User
-from apps.players.models import Player
+from apps.players.models import Player, Log
 
 # Exception
 from django.db.utils import IntegrityError
@@ -22,8 +22,13 @@ def login_player(request: HttpRequest):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
+        player = Player.objects.get(user_id=user.pk)
         if user:
             login(request, user)
+            Log.objects.create(
+                player=player,
+                date=player.user.last_login
+            )
             return redirect('config')
         else:
             return render(request, 'players/login.html', {'error': 'Usuario o contraseña incorrecta'})
