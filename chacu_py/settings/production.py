@@ -3,7 +3,8 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['chacu-py.herokuapp.com', ]
-
+STATICFILES_DIRS = tuple()
+STATIC_ROOT = BASE_DIR / 'static'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
