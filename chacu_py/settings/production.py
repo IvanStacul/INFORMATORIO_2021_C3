@@ -2,7 +2,7 @@ from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['chacu_py.herokuapp.com', ]
+ALLOWED_HOSTS = ['chacu-py.herokuapp.com', ]
 
 DATABASES = {
     'default': {
