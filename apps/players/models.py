@@ -13,3 +13,8 @@ class Player(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Log(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now=True)

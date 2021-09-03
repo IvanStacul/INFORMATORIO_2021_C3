@@ -6,7 +6,7 @@ from django.http import HttpRequest
 
 # Models
 from django.contrib.auth.models import User
-from apps.players.models import Player
+from apps.players.models import Player, Log
 
 # Exception
 from django.db.utils import IntegrityError
@@ -22,8 +22,13 @@ def login_player(request: HttpRequest):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
+        player = Player.objects.get(user_id=user.pk)
         if user:
             login(request, user)
+            Log.objects.create(
+                player=player,
+                date=player.user.last_login
+            )
             return redirect('config')
         else:
             return render(request, 'players/login.html', {'error': 'Usuario o contraseña incorrecta'})
@@ -49,7 +54,7 @@ def signup_player(request: HttpRequest):
         if password != password_confirm:
             return render(
                 request=request,
-                template_name='players/signup.html',
+                template_name='index.html',
                 context={
                     'error': 'Las contraseñas no coinciden.'
                 }
@@ -67,7 +72,7 @@ def signup_player(request: HttpRequest):
         except IntegrityError:
             return render(
                 request=request,
-                template_name='players/signup.html',
+                template_name='index.html',
                 context={
                     'error': 'El usuario ingresado ya existe'
                 }
@@ -78,7 +83,7 @@ def signup_player(request: HttpRequest):
         user.last_name = request.POST['last_name']
         user.is_staff = False
         user.is_superuser = False
-        # import pdb; pdb.set_trace()
+
         user.save()
 
         player = Player(user=user)
@@ -86,4 +91,4 @@ def signup_player(request: HttpRequest):
 
         return redirect('login')
 
-    return render(request=request, template_name='players/signup.html')
+    return render(request=request, template_name='index.html')
