@@ -36,6 +36,19 @@
             >JUGAR</a
           >
         </li>
+        {% if request.user.is_authenticated %}
+          <li>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+				{% else %}
+          <li>
+            <a class="nav-link" href="#" data-bs-toggle="modal"
+						data-bs-target="#chacu_modal-login">Login</a>
+          </li>
+          <li>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#chacu_modal" href="#chacu_modal">Registrarse</a>
+          </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="#Contacto">Contacto</a>
         </li>
