@@ -57,6 +57,25 @@
                   <img src="{% static 'img/btn/nuevo.png' %}" class="bot" style="max-width: 80%">
                 </a>
 							</div>
+              <!-- COMPARTIR EN FACEBOOK -->
+              <div id="fb-root"></div>
+              <script
+                async defer crossorigin="anonymous" nonce="K1yq99K5"
+                src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v11.0">
+              </script>
+              <div
+                class="fb-share-button"
+                data-href="{{request.build_absolute_uri}}"
+                data-layout="button"
+                data-size="large"
+              >
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/sharer/sharer.php?u={{url_share}}&amp;src=sdkpreparse"
+                  class="fb-xfbml-parse-ignore">
+                    Compartir
+                </a>
+              </div>
 						</div>
 					</div>
 				</div>

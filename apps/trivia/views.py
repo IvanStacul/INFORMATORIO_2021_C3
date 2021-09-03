@@ -216,8 +216,19 @@ def config(request: HttpRequest):
         }
     )
 
-# def fin(request: HttpRequest):
-#     return render(request, 'trivia/fin.html')
+def share(request: HttpRequest, trivia: int):
+
+    url = str(request.build_absolute_uri())
+
+    url = url.replace(':', '%3A').replace('/', '%2F')
+
+    context={
+        'error': 'El juego ya finalizó.',
+        'trivia': Quiz.objects.get(pk=trivia),
+        'max_score': settings.QUESTION_LIMIT * 20,
+        'url_share': url
+    }
+    return render(request, 'trivia/share.html', context)
 
 def pregunta(request: HttpRequest):
     return render(request, 'trivia/pregunta.html')
