@@ -20,49 +20,60 @@
 
 
 	<section>
-		<div class="container" id="modos_de_juego">
-			<div class="container">
-				<div class="row">
-					<div class="container">
-							<div class="col-md-12 col text-center">
-								<img src="{% static 'img/isotipo_chacu.png' %}" class="img-fluid" style="max-width: 20%">
-                <h2 class="sub_title">Hola @Nombre_Jugador</h2>
-							</div>
-							</br>
-					</div>
-					<div class="col-md-6 col text-center">
-						<h2 class="sub_title">Nivel de Dificultad</h2>
-						<select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-							<option selected>Seleccionar nivel</option>
-							<option value="1">Principiante</option>
-							<option value="2">Intermedio</option>
-							<option value="3">Avanzado</option>
-						</select>
-					</div>
+    <form action="{% url 'config' %}" method="POST">
+    {% csrf_token %}
+      <div class="container" id="modos_de_juego">
+        <div class="container">
+          <div class="row">
+            <div class="container">
+                <div class="col-md-12 col text-center">
+                  <img src="{% static 'img/isotipo_chacu.png' %}" class="img-fluid" style="max-width: 20%">
+                  <h2 class="sub_title">Hola @{{request.user.username}}</h2>
+                </div>
+                </br>
+            </div>
+            <div class="col-md-6 col text-center">
+              <h2 class="sub_title">Nivel de Dificultad</h2>
+              {% if levels %}
+                <select  name="level" class="form-select form-select-md mb-3" required aria-label=".form-select-lg example">
+                    <option selected value="">Open this select menu</option>
+                  {% for level in levels %}
+                    <option value="{{level.id}}">{{level.name}}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <div class="alert alert-danger" role="alert">
+                  Lo sentimos, algo salió mal 😥, no hay un nivel para seleccionar.
+                </div>
+              {% endif %}
+            </div>
 
-					<div class="col-md-6 col text-center">
-						<h2 class="sub_title">Categoría Temática</h2>
-						<select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-							<option selected>Seleccionar categoría</option>
-							<option value="1">Cultura y Arte</option>
-							<option value="2">Historia</option>
-							<option value="3">Deporte</option>
-							<option value="2">Geografía</option>
-							<option value="3">Economía</option>
-							<option value="2">Cienncia y Educación</option>
-							<option value="3">Entretenimiento</option>
-						</select>
-					</div>
-				</div>
-				</br>
-			</div>
-		</div>
-		<div class="container" id="play">
-				<div class="col-md-12 col text-center ">
-					<a href="#"><img src="{% static 'img/btn/btn-jugar.png' %}" class="bot"></a>
-					<br></br>
-				</div>
-		</div>
+            <div class="col-md-6 col text-center">
+              <h2 class="sub_title">Categoría Temática</h2>
+              {% if categories %}
+                <select name="category" class="form-select form-select-md mb-3" aria-label=".form-select-lg example" required>
+                  <option selected value="">Open this select menu</option>
+                  {% for category in categories %}
+                    <option value="{{category.id}}">{{category.name}}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <div class="alert alert-danger" role="alert">
+                  Lo sentimos, algo salió mal 😥, no hay una categoría para seleccionar.
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          </br>
+        </div>
+      </div>
+      <div class="container" id="play">
+          <div class="col-md-12 col text-center ">
+            <button type="submit"><img src="{% static 'img/btn/btn-jugar.png' %}" class="bot"></button>
+            <br></br>
+          </div>
+      </div>
+    </form>
 	</section>
  {% include 'includes/footer.html' %}
 {% endblock content %}

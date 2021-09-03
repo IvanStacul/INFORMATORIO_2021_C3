@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block title %} Chacú.py {% endblock title %}
 {%block styles %}
   {% load static %}
@@ -12,7 +12,7 @@
         <p>Puntaje: {{trivia.score}}/{{max_score}}</p>
       </div>
     {% else %}
-      {% if question %} 
+      {% if question %}
         {% csrf_token %}
         <input type="number" name="question_id" value="{{ question.pk }}" hidden>
         <input type="number" name="trivia_id" value="{{ trivia.pk }}" hidden>
@@ -22,15 +22,15 @@
           </div>
           <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
             {% for option in options %}
-            <label class="options">
-              {{ option.content }}
-              <input type="radio" name="answer" value="{{ option.pk }}" />
-              <span class="checkmark"></span>
-            </label>
+              <label class="options">
+                {{ option.content }}
+                <input type="radio" name="answer" value="{{ option.pk }}" />
+                <span class="checkmark"></span>
+              </label>
             {% empty %}
-            <div class="alert alert-danger" role="alert">
-              No hay opciones para la pregunta
-            </div>
+              <div class="alert alert-danger" role="alert">
+                No hay opciones para la pregunta
+              </div>
             {% endfor %}
           </div>
         </div>

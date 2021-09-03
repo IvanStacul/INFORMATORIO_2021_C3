@@ -26,7 +26,7 @@ def play(request: HttpRequest, trivia: int):
     if not trivia.end is None:
         return render(
             request=request,
-            template_name='trivia/play.html',
+            template_name='trivia/fin.html',
             context={
                 'error': 'El juego ya finalizó.',
                 'trivia': trivia,
@@ -48,6 +48,7 @@ def play(request: HttpRequest, trivia: int):
 
     # si ya se envio una respuesta a la pregunta
     if request.method == "POST":
+        # import pdb; pdb.set_trace()
         try:
             selected = Option.objects.get(  # opcion elegida
                 pk=request.POST.get('answer')
@@ -68,7 +69,7 @@ def play(request: HttpRequest, trivia: int):
 
             return render(
                 request=request,
-                template_name='trivia/false.html',
+                template_name='trivia/sabias_error.html',
                 context={
                     'description': 'no seleccionaste nignuna opcion',
                     'trivia': trivia,
@@ -83,14 +84,14 @@ def play(request: HttpRequest, trivia: int):
 
         if selected.isCorrect:  # si la opcion elegida es la correcta
             answer.isCorrect = True  # marcar como acertada la pregunta
-            template_name = 'trivia/true.html'  # devolver una pagina de acierto
+            template_name = 'trivia/sabias_bien.html'  # devolver una pagina de acierto
             context = {
                 'description': 'fue correcto',
                 'trivia': trivia,
             }
         else:
             answer.isCorrect = False  # marcar como erronea la pregunta
-            template_name = 'trivia/false.html'
+            template_name = 'trivia/sabias_error.html'
             context = {
                 'description': 'fue incorrecto',
                 'trivia': trivia,
@@ -114,7 +115,7 @@ def play(request: HttpRequest, trivia: int):
     # renderea el juego con las preguntas y opciones
     return render(
         request=request,
-        template_name='trivia/play.html',
+        template_name='trivia/pregunta.html',
         context={
             'trivia': trivia,
             'question': progress.question,
@@ -208,21 +209,21 @@ def config(request: HttpRequest):
     # renderea la página de configuración
     return render(
         request=request,
-        template_name='trivia/config.html',
+        template_name='trivia/set_partida.html',
         context={
             'levels': Level.objects.all(),
             'categories': Category.objects.all(),
         }
     )
 
-def fin(request: HttpRequest):
-    return render(request, 'trivia/fin.html')
+# def fin(request: HttpRequest):
+#     return render(request, 'trivia/fin.html')
 
 def pregunta(request: HttpRequest):
     return render(request, 'trivia/pregunta.html')
 
-def sabias(request: HttpRequest):
-    return render(request, 'trivia/sabias.html')
+# def sabias(request: HttpRequest):
+#     return render(request, 'trivia/sabias_bien.html')
 
-def configuracion(request: HttpRequest):
-    return render(request, 'trivia/set_partida.html')
+# def configuracion(request: HttpRequest):
+#     return render(request, 'trivia/set_partida.html')
