@@ -34,25 +34,36 @@
             {% else %}
               <h2 class="sub_title">Preguntas del desafío</h2>
               <br>
-              <div id="pregunta">
-                {% if question %}
-                  <input type="number" name="question_id" value="{{ question.pk }}" hidden>
-                  <input type="number" name="trivia_id" value="{{ trivia.pk }}" hidden>
-                  <h4>{{question.content}}</h4>
-                  <br>
-                  {# Opciones #}
-                  <div class="row align-self-center">
-                    {% for option in options %}
-                    <div class="form-check col-md-4">
-                      <input type="checkbox" name="answer" value="{{ option.pk }}" class="btn-check" id="btn-check" autocomplete="off">
-                      <label class="btn btn-success" for="btn-check">{{ option.content }}</label>
+                <div id="pregunta">
+                  <div class="col-md-12 text-center" id="nav_preg">
+                    <div class="row">
+                            {% if question %}
+                              <input type="number" name="question_id" value="{{ question.pk }}" hidden>
+                              <input type="number" name="trivia_id" value="{{ trivia.pk }}" hidden>
+                              <h4>{{question.content}}</h4>
+                              <br>
+                               <br>
+                              {# Opciones #}
+                              <div class="row">
+                                {% for option in options %}
+                                    <div class="col-md-4">
+                                      <input class="form-check-input" type="radio" name="answer" id="btn-check" value="{{ option.pk }}">
+                                      <label class="form-check-label" for="btn-check">{{ option.content }}</label>
+                                    </div>
+                                {% empty %}
+                                <div class="alert alert-danger" role="alert">
+                                  No hay opciones para la pregunta
+                                </div>
+                                {% endfor %}
+                              </div>
+                              </div>
+                              </br>
+                                  <button type="submit" class="btn btn-primary-outline">
+                                    <img src="{% static 'img/btn/siguiente_.png' %}" class="bot">
+                                  </button>
                     </div>
-                    {% empty %}
-                    <div class="alert alert-danger" role="alert">
-                      No hay opciones para la pregunta
-                    </div>
-                    {% endfor %}
                   </div>
+                </div>
                 {% else %}
                   <div class="alert alert-danger" role="alert">
                     Lo sentimos, algo salió mal 😥, no hay una pregunta para que puedas
@@ -65,29 +76,6 @@
           </div>
         </div>
 
-        <div class="col-md-12 text-center" id="nav_preg">
-          <div class="row">
-            <div class="col-md-6 left">
-              <button>
-                <img src="{% static 'img/btn/ant_.png' %}" class="bot" style="max-width: 30%">
-              </button>
-            </div>
-
-            <div class="col-md-6 right">
-                <button type="submit">
-                  <img src="{% static 'img/btn/sig_.png' %}" class="bot" style="max-width: 30%">
-                </button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 col text-center ">
-              <div class="progress" style="height: 30px">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%</div>
-              </div>
-            </div>
-          </div>
-          </br>
-        </div>
       </div>
     </form>
   </section>
