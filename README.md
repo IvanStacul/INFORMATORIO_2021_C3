@@ -51,13 +51,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Run aplication
-
-```python
-python manage.py migrate
-python manage.py runserver
-```
-
 ### Change settings in manage.py file
 
 from
@@ -71,6 +64,17 @@ to
 ```python
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chacu_py.settings.development')
 ```
+
+### Run aplication
+
+```python
+python manage.py migrate
+python manage.py runserver
+```
+
+### Play at
+
+http://127.0.0.1:8000/
 
 ## Authors
 
