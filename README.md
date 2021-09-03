@@ -2,6 +2,10 @@
 
 CHACÚ.py es un juego gratuito, didáctico y de habilidad, donde el jugador debe contestar preguntas sobre conocimientos generales en torno a la Provincia el Chaco.
 
+## Online version
+
+[Chacú.py](https://chacu-py.herokuapp.com/)
+
 ## Usage
 
 ### Clone the repo
@@ -50,9 +54,22 @@ pip install -r requirements.txt
 ### Run aplication
 
 ```python
-python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+```
+
+### Change settings in manage.py file
+
+from
+
+```python
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chacu_py.settings.production')
+```
+
+to
+
+```python
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chacu_py.settings.development')
 ```
 
 ## Authors
