@@ -1,6 +1,6 @@
 # CHACÚ.py
 
-Repository of the final web project, developed with Django, for the course given by the Informatorio.
+CHACÚ.py es un juego gratuito, didáctico y de habilidad, donde el jugador debe contestar preguntas sobre conocimientos generales en torno a la Provincia el Chaco.
 
 ## Usage
 
