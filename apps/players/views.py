@@ -22,8 +22,8 @@ def login_player(request: HttpRequest):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        player = Player.objects.get(user_id=user.pk)
         if user:
+            player = Player.objects.get(user_id=user.pk)
             login(request, user)
             Log.objects.create(
                 player=player,
