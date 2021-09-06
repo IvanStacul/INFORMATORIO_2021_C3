@@ -28,10 +28,14 @@ def contact(request):
 
 
 def ranking(request: HttpRequest):
-
-    quizzes = Quiz.objects.raw(
-        'SELECT trivia_quiz.id, MAX(score) FROM trivia_quiz GROUP BY player_id, trivia_quiz.id')
-    quizzes = sorted(quizzes, key=lambda q: (q.score, q.time()), reverse=False)
+    qid = []
+    # players id
+    pid=Quiz.objects.values('player_id').distinct()
+    for pi in pid:
+        qs = Quiz.objects.filter(player_id=pi['player_id'])
+        qs = sorted(qs, key=lambda q: (q.score, q.time()), reverse=True)
+        qid.append(qs[0].id)
+    quizzes = Quiz.objects.filter(pk__in=qid)
     return render(request, 'core/ranking.html', context={'quizzes': quizzes})
 
 
