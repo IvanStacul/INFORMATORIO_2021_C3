@@ -31,11 +31,16 @@ def ranking(request: HttpRequest):
     qid = []
     # players id
     pid=Quiz.objects.values('player_id').distinct()
-    for pi in pid:
-        qs = Quiz.objects.filter(player_id=pi['player_id'])
-        qs = sorted(qs, key=lambda q: (q.score, q.time()), reverse=True)
-        qid.append(qs[0].id)
+    for i,pi in enumerate(pid):
+        try:
+            qs = Quiz.objects.filter(player_id=pi['player_id'])
+            qs = [q for q in qs if q.end!=None]
+            qs = sorted(qs, key=lambda q: (q.score, q.time()), reverse=True)
+            qid.append(qs[0].id)
+        except TypeError:
+            import pdb;pdb.set_trace()
     quizzes = Quiz.objects.filter(pk__in=qid)
+    quizzes = sorted(quizzes, key=lambda q: (-q.score, q.time()), reverse=False)
     return render(request, 'core/ranking.html', context={'quizzes': quizzes})
 
 
@@ -177,7 +182,7 @@ def trivia_options(request: HttpRequest):
         }
 
         if not all(value is None for value in data.values()):
-            if request.POST.get('isCorrect') is 'on':
+            if request.POST.get('isCorrect') == 'on':
                 isCorrect = True
             else:
                 isCorrect = False
@@ -205,7 +210,7 @@ def trivia_option_edit(request: HttpRequest, option_id: int):
     }
 
     if request.method == 'POST':
-        if request.POST.get('isCorrect') is 'on':
+        if request.POST.get('isCorrect') == 'on':
             isCorrect = True
         else:
             isCorrect = False
