@@ -30,7 +30,7 @@ def contact(request):
 def ranking(request: HttpRequest):
 
     quizzes = Quiz.objects.raw(
-        'SELECT MAX(score), * FROM trivia_quiz GROUP BY player_id')
+        'SELECT trivia_quiz.id, MAX(score), * FROM trivia_quiz GROUP BY player_id')
     quizzes = sorted(quizzes, key=lambda q: (q.score, q.time()), reverse=False)
     return render(request, 'core/ranking.html', context={'quizzes': quizzes})
 
